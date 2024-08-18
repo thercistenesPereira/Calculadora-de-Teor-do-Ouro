@@ -14,11 +14,16 @@ function Form() {
     const [carats, setCarats] = useState(0);
     const [calcPure, setCalcPure] = useState(0);
     const [calcImpure, setCalcImpure] = useState(0);
+    const [showResult, setShowResult] = useState(true);
 
     const dryWeightNumber = Number(dryWeight);
     const wetWeightNumber = Number(wetWeight);
     const contentGold = constantGold.CONST_CONTENT_GOLD;
     const caratsGold = constantGold.CONST_KILATES_GOLD;
+
+    const handleResult = () => {
+        setShowResult((prevState) => !prevState);
+    }
 
     const handlCalcGold = () => {
         const resultContent = goldContent(dryWeightNumber, wetWeightNumber, contentGold);
@@ -40,19 +45,26 @@ function Form() {
     }
 
     const isFormValid = () => {
-        isFormValidation(dryWeight, wetWeight);
+        return isFormValidation(dryWeight, wetWeight);
     }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        isFormValid();
-        handlCalcGold();
-        resetForm();
+
+        if (isFormValid()) {
+            handlCalcGold();
+            resetForm();
+            setShowResult(false);
+        }
+        else {
+            setShowResult(true);
+        }
     }
     
     return (
         <main>
-            <form onSubmit={ handleSubmit }>
+            { showResult ? (
+                <form onSubmit={ handleSubmit }>
                 <Label
                     onTitle="Peso Seco"
                     onHtmlFor="dryWeight"
@@ -79,13 +91,15 @@ function Form() {
                 />
                 <button>Calcular</button>
             </form>
-            
-            <ResultCalc
+            ) : (
+                <ResultCalc
                 onCalcWeigth={ calcWeight }
                 onCalcPure={ calcPure }
                 onCalcImpure={ calcImpure }
                 onCarats={ carats }
+                handleResult={ handleResult }
             />
+            ) }           
         </main>
     )
 }

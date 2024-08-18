@@ -3,9 +3,17 @@ type ResultCalcProps = {
     onCalcPure: number;
     onCalcImpure: number;
     onCarats: number;
+    handleResult: () => void
 }
 
-function ResultCalc({ onCalcWeigth, onCalcPure, onCalcImpure, onCarats }: ResultCalcProps) {
+function ResultCalc(
+    {
+        onCalcWeigth,
+        onCalcPure,
+        onCalcImpure,
+        onCarats,
+        handleResult 
+    }: ResultCalcProps) {
     return (
         <section>
             <h2>Resultado</h2>
@@ -13,6 +21,7 @@ function ResultCalc({ onCalcWeigth, onCalcPure, onCalcImpure, onCarats }: Result
             <p>{ `Kilates ${onCarats}` }</p>
             <p>{ `Ouro Mil ${onCalcPure}g` }</p>
             <p>{ `Impurezas ${onCalcImpure}g` }</p>
+            <button onClick={ handleResult }>Voltar</button>
         </section>
     )
 }
