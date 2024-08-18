@@ -4,6 +4,7 @@ import ResultCalc from "../ResultCalc";
 import { useState } from 'react';
 import { goldContent, goldPure, impuritiesGold } from "../../utils/functionCalc";
 import { constantGold } from "../../constants";
+import { isFormValidation } from "./validation";
 
 function Form() {
     const [dryWeight, setDryWeight] = useState('');
@@ -38,8 +39,13 @@ function Form() {
         setWetWeight('');
     }
 
+    const isFormValid = () => {
+        isFormValidation(dryWeight, wetWeight);
+    }
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        isFormValid();
         handlCalcGold();
         resetForm();
     }
