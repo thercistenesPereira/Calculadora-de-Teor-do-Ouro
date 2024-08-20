@@ -58,6 +58,7 @@ function Form() {
         }
         else {
             setShowResult(true);
+            resetForm();
         }
     }
     
