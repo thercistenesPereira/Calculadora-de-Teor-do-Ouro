@@ -1,10 +1,15 @@
+import PriceGold from "../PriceGold"
+
 type TitleProps = {
     onTitle: string;
 }
 
 function Title({ onTitle }: TitleProps) {
     return (
-        <h1>{  onTitle }</h1>
+        <header>
+            <h2>{  onTitle }</h2>
+            <PriceGold />
+        </header>
     )
 }
 
