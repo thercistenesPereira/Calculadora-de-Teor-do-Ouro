@@ -1,31 +1,23 @@
-import { useEffect, useState } from "react";
-import fetchGoldPrice from "../../service";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch, ReduxState } from '../../types';
+import { fecthPriceGoldAPI } from '../../redux/action';
 
 function PriceGold() {
-    const [goldPrice, setGoldPrice] = useState<number | string>('');
+    const rootState = useSelector((state: ReduxState) => state);
+    const dispatch: Dispatch = useDispatch();
 
     useEffect(() => {
-        const fetchAndSetGoldPrice = async () => {
-            try {
-                const price = await fetchGoldPrice();
+        dispatch(fecthPriceGoldAPI());
+    }, [dispatch]);
 
-                if (typeof price === 'number') {
-                    setGoldPrice(price);
-                } else {
-                    throw new Error('Valor inválido retornado pela API');
-                }
-            } catch (error) {
-                console.error('Erro ao buscar o preço do ouro:', error);
-                setGoldPrice('Erro ao carregar');
-            }
-        };
+    if (rootState.isFetchin) return <p>Carregando...</p>;
+    if (rootState.errorMessage) return <p>Erro: {rootState.errorMessage}</p>;
 
-            fetchAndSetGoldPrice()
-    }, []);
     return (
         <span>
             <p>Preço do Ouro Mil (Gramas)</p>
-            <p>{goldPrice}</p>
+            <p>{ rootState.priceGold }</p>
         </span>
     )
 }

@@ -4,7 +4,6 @@ import Form from './components/Form';
 
 function App() {
 
-
   return (
     <>
       <Title onTitle="Calculadora de Teor do Ouro" />
