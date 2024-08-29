@@ -1,17 +1,18 @@
-const API_GOLD = "https://www.goldapi.io/api/XAU/USD";
-const API_USD_BRL = "https://economia.awesomeapi.com.br/json/last/USD-BRL";
-// const API_GOLD = "impede requisição";
-// const API_USD_BRL = "impede requisição";
+// const API_GOLD = "https://www.goldapi.io/api/XAU/USD";
+// const API_USD_BRL = "https://economia.awesomeapi.com.br/json/last/USD-BRL";
+
+const API_GOLD = "impede requisição";
+const API_USD_BRL = "impede requisição";
 
 const fetchGoldPrice = async (): Promise<number> => {
     const myHeaders = new Headers();
-    myHeaders.append("x-access-token", process.env.REACT_APP_GOLD_API_KEY as string);
+    myHeaders.append("x-access-token", "goldapi-9pgjqrloevpuew-io");
     myHeaders.append("Content-Type", "application/json");
 
     const requestOptions: RequestInit = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
     };
 
     try {

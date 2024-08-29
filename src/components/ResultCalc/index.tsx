@@ -3,6 +3,8 @@ type ResultCalcProps = {
     onCalcPure: number;
     onCalcImpure: number;
     onCarats: number;
+    onPriceDiscount: number;
+    onPriceStockExchange: number;
     handleResult: () => void
 }
 
@@ -12,6 +14,8 @@ function ResultCalc(
         onCalcPure,
         onCalcImpure,
         onCarats,
+        onPriceDiscount,
+        onPriceStockExchange,
         handleResult 
     }: ResultCalcProps) {
     return (
@@ -21,6 +25,8 @@ function ResultCalc(
             <p>{ `Kilates ${onCarats}` }</p>
             <p>{ `Ouro Mil ${onCalcPure}g` }</p>
             <p>{ `Impurezas ${onCalcImpure}g` }</p>
+            <p>{ `Preço com Deságio R$ ${onPriceDiscount}`}</p>
+            <p>{ `Preço na Bolsa R$ ${onPriceStockExchange}`}</p>
             <button onClick={ handleResult }>Voltar</button>
         </section>
     )

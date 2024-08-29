@@ -1,25 +1,40 @@
 import Label from "../Label";
 import Input from "../Input";
 import ResultCalc from "../ResultCalc";
-import { useState } from 'react';
-import { goldContent, goldPure, impuritiesGold } from "../../utils/functionCalc";
+import { useState, useEffect } from 'react';
+import { goldContent, goldPure, impuritiesGold, priceGoldDiscount,priceGoldPureStock } from "../../utils/functionCalc";
 import { constantGold } from "../../constants";
 import { isFormValidation } from "./validation";
+import { useDispatch, useSelector } from 'react-redux';
+import { fecthPriceGoldAPI } from '../../redux/action';
+import { Dispatch, ReduxState } from '../../types';
+
 
 function Form() {
     const [dryWeight, setDryWeight] = useState('');
     const [wetWeight, setWetWeight] = useState('');
+    const [discount, setDiscount] = useState('');
 
     const [calcWeight, setCalcWeight] = useState(0);
     const [carats, setCarats] = useState(0);
     const [calcPure, setCalcPure] = useState(0);
     const [calcImpure, setCalcImpure] = useState(0);
+    const [priceDiscount, setPriceDiscount] = useState(0);
+    const [priceStockExchange, setPriceStockExchange] = useState(0);
     const [showResult, setShowResult] = useState(true);
 
     const dryWeightNumber = Number(dryWeight);
     const wetWeightNumber = Number(wetWeight);
+    const discountPrice = Number(discount);
     const contentGold = constantGold.CONST_CONTENT_GOLD;
     const caratsGold = constantGold.CONST_KILATES_GOLD;
+
+    const priceGold = useSelector((state: ReduxState) => state.priceGold);
+    const dispatch: Dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fecthPriceGoldAPI());
+    }, [dispatch]);
 
     const handleResult = () => {
         setShowResult((prevState) => !prevState);
@@ -37,6 +52,14 @@ function Form() {
 
         const resultImpure = impuritiesGold(dryWeightNumber, wetWeightNumber, contentGold);
         setCalcImpure(Number(resultImpure.toFixed(2)));
+
+        const resultPriceDiscount = priceGoldDiscount(
+            dryWeightNumber, wetWeightNumber, contentGold, priceGold, discountPrice
+        );
+        setPriceDiscount(Number(resultPriceDiscount.toFixed(2)));
+
+        const resultPriceStockExchange = priceGoldPureStock(dryWeightNumber, wetWeightNumber, contentGold, priceGold);
+        setPriceStockExchange(Number(resultPriceStockExchange.toFixed(2)));
     }
 
     const resetForm = () => {
@@ -91,6 +114,19 @@ function Form() {
                     onPlaceholder="Peso em Gramas"
                 />
 
+                <Label
+                    onTitle="Deságio"
+                    onHtmlFor="discount"
+                />
+                <Input
+                    onType="number"
+                    onId="discount"
+                    onName="discount"
+                    onChange={ ({target}) => setDiscount(target.value)}
+                    onValue={ discount }
+                    onPlaceholder="Desconto (%)"
+                />
+
                 <button>Calcular</button>
             </form>
             ) : (
@@ -99,6 +135,8 @@ function Form() {
                 onCalcPure={ calcPure }
                 onCalcImpure={ calcImpure }
                 onCarats={ carats }
+                onPriceDiscount={ priceDiscount }
+                onPriceStockExchange={ priceStockExchange }
                 handleResult={ handleResult }
             />
             ) }           
