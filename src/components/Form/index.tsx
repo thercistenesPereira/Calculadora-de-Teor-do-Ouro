@@ -13,7 +13,10 @@ import { Dispatch, ReduxState } from '../../types';
 function Form() {
     const [dryWeight, setDryWeight] = useState('');
     const [wetWeight, setWetWeight] = useState('');
-    const [discount, setDiscount] = useState('');
+    const [discount, setDiscount] = useState(() => {
+        const savedDiscount = localStorage.getItem('discount');
+        return savedDiscount !== null ? savedDiscount : '';
+    });
 
     const [calcWeight, setCalcWeight] = useState(0);
     const [carats, setCarats] = useState(0);
@@ -31,6 +34,10 @@ function Form() {
 
     const priceGold = useSelector((state: ReduxState) => state.priceGold);
     const dispatch: Dispatch = useDispatch();
+
+    useEffect(() => {
+        localStorage.setItem('discount', discount);
+    }, [discount]);
 
     useEffect(() => {
         dispatch(fecthPriceGoldAPI());
