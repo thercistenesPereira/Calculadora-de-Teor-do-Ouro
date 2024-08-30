@@ -1,9 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --color_gold_1000: #282108;
+  --color_gold_900: #322A08;
+  --color_gold_800: #4F4108;
+  --color_gold_600: #5B4B08;
+  --color_gold_500: #856C08;
+  --color_gold_400: #9C7F08;
+  --color_gold_300: #AD8C08;
+  --color_gold_200: #AD8C08;
+  --color_gold_100: #BA9708;
+  --color_gold_000: #DCB208;
+
+  --color_white_ice: #DDD8D5;
+}
+
 .content_header {
   display: flex;
   justify-content: space-around;
-  border: 1px solid orange;
+  align-items: center;
+  padding: 0.8rem 0;
+  background-image: linear-gradient(to right, var(--color_gold_900), var(--color_gold_800));
+  color: var(--color_white_ice);
 }
 
 .content_price_gold {
   display: flex;
+}
+
+.font_header {
+  font-family: "Roboto", sans-serif;
+}
+
+.font_header_title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.font_header_price_gold {
+  padding-left: 1rem;
+}
+
+.gif_loading {
+  height: 1rem;
 }

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch, ReduxState } from '../../types';
 import { fecthPriceGoldAPI } from '../../redux/action';
+import gifLoading from '../../assets/loading-11.gif';
 
 function PriceGold() {
     const rootState = useSelector((state: ReduxState) => state);
@@ -11,13 +12,13 @@ function PriceGold() {
         dispatch(fecthPriceGoldAPI());
     }, [dispatch]);
 
-    if (rootState.isFetchin) return <p>Carregando...</p>;
+    if (rootState.isFetchin) return <img src={ gifLoading } alt="Carregando..." className="gif_loading" />;
     if (rootState.errorMessage) return <p>Erro: {rootState.errorMessage}</p>;
 
     return (
         <span className="content_price_gold">
-            <p>Preço do Ouro Mil (g) </p>
-            <p>{ rootState.priceGold }</p>
+            <p className="font_header">Preço do Ouro(g)</p>
+            <p className="font_header font_header_price_gold">{ `R$ ${rootState.priceGold}` }</p>
         </span>
     )
 }
