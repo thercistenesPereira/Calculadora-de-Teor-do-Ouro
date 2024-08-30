@@ -1,12 +1,12 @@
 import './App.css';
-import Title from './components/Title';
 import Form from './components/Form';
+import Header from './components/Header';
 
 function App() {
 
   return (
     <>
-      <Title onTitle="Calculadora de Teor do Ouro" />
+      <Header />
       <Form />
     </>
   )

@@ -1,1 +1,0 @@
-export const KEY_GOLD_API = process.env.REACT_APP_GOLD_API_KEY as string

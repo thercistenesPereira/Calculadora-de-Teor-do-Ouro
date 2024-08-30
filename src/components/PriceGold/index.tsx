@@ -15,8 +15,8 @@ function PriceGold() {
     if (rootState.errorMessage) return <p>Erro: {rootState.errorMessage}</p>;
 
     return (
-        <span>
-            <p>Preço do Ouro Mil (Gramas)</p>
+        <span className="content_price_gold">
+            <p>Preço do Ouro Mil (g) </p>
             <p>{ rootState.priceGold }</p>
         </span>
     )
