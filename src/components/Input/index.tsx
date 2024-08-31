@@ -5,9 +5,10 @@ type InputProps = {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onValue: string;
     onPlaceholder: string;
+    autoFocus?: boolean;
 }
 
-function Input({ onType, onId, onName, onChange, onValue, onPlaceholder }: InputProps) {
+function Input({ onType, onId, onName, onChange, onValue, onPlaceholder, autoFocus }: InputProps) {
     return (
         <input
             type={ onType }
@@ -16,6 +17,8 @@ function Input({ onType, onId, onName, onChange, onValue, onPlaceholder }: Input
             onChange={ onChange }
             value={ onValue }
             placeholder={ onPlaceholder }
+            className="input_style"
+            autoFocus={autoFocus}
         />
     )
 }

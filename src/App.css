@@ -15,6 +15,17 @@
   --color_white_ice: #DDD8D5;
 }
 
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.body_style {
+  height: 100vh;
+}
+
 .content_header {
   display: flex;
   justify-content: space-around;
@@ -43,4 +54,138 @@
 
 .gif_loading {
   height: 1rem;
+}
+
+.main_style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./assets/banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.form_style {
+  display: flex;
+  flex-direction: column;
+  min-width: 20rem;
+  padding: 3rem 1rem 5rem 1rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: -9rem;
+}
+
+.label_style {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 450;
+  color: var(--color_gold_1000);
+}
+
+.input_style {
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.2rem;
+  border-radius: 5px;
+  outline: none;
+  border: 1.5px solid var(--color_gold_1000);
+  transition: transform 0.2s ease-in-out;
+}
+
+.input_style:focus {
+  box-shadow: 0 0 5px var(--color_gold_800);
+  outline: none;
+}
+
+.input_style:hover {
+  transform: scale(1.02);
+}
+
+.button_style {
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  background-image: linear-gradient(to right, var(--color_gold_900), var(--color_gold_800));
+  color: var(--color_white_ice);
+  border-radius: 5px;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  margin-top: 2rem;
+}
+
+.button_style:hover {
+  background-image: linear-gradient(to right, var(--color_gold_200), var(--color_gold_100));
+  transform: scale(1.02);
+  box-shadow: 0 0 2px var(--color_gold_800);
+}
+
+.content_footer {
+  background-image: linear-gradient(to right, var(--color_gold_900), var(--color_gold_800));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+  gap: 1rem;
+  position: fixed; /* Fixa o rodapé na tela */
+  bottom: 0; /* Posiciona o rodapé no final da tela */
+  width: 100%; 
+}
+
+.icon_react {
+  height: 1rem;
+  animation: spin 9s linear infinite;
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon_react:hover {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.link_style {
+  color: var(--color_white_ice);
+  text-decoration: none;
+}
+
+.link_style:hover {
+  color: var(--color_gold_000);
+}
+
+.result_style {
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: var(--color_gold_1000);
+  margin-top: -8rem;
+}
+
+.result_title {
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.result_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.button_result {
+  margin-top: 1rem;
+  width: 100%;
 }

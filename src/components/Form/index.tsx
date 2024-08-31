@@ -93,9 +93,9 @@ function Form() {
     }
     
     return (
-        <main>
+        <main className="main_style">
             { showResult ? (
-                <form onSubmit={ handleSubmit }>
+                <form onSubmit={ handleSubmit } className="form_style">
                 <Label
                     onTitle="Peso Seco"
                     onHtmlFor="dryWeight"
@@ -107,6 +107,7 @@ function Form() {
                     onChange={ ({ target }) => setDryWeight(target.value) }
                     onValue={ dryWeight }
                     onPlaceholder="Peso em Gramas"
+                    autoFocus
                 />
                 <Label
                     onTitle="Peso Molhado"
@@ -134,7 +135,7 @@ function Form() {
                     onPlaceholder="Desconto (%)"
                 />
 
-                <button>Calcular</button>
+                <button className="button_style">Calcular</button>
             </form>
             ) : (
                 <ResultCalc

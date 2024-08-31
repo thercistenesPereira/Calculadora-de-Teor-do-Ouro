@@ -19,15 +19,40 @@ function ResultCalc(
         handleResult 
     }: ResultCalcProps) {
     return (
-        <section>
-            <h2>Resultado</h2>
-            <p>{ `Teor ${onCalcWeigth}` }</p>
-            <p>{ `Kilates ${onCarats}` }</p>
-            <p>{ `Ouro Mil ${onCalcPure}g` }</p>
-            <p>{ `Impurezas ${onCalcImpure}g` }</p>
-            <p>{ `Preço com Deságio R$ ${onPriceDiscount}`}</p>
-            <p>{ `Preço na Bolsa R$ ${onPriceStockExchange}`}</p>
-            <button onClick={ handleResult }>Voltar</button>
+        <section className="result_style">
+            <h2 className="result_title">Resultado</h2>
+
+            <div className="result_container">
+                <p>Teor</p>
+                <p>{onCalcWeigth}</p>
+            </div>
+
+            <div className="result_container">
+                <p>Kilates</p>
+                <p>{onCarats}</p>
+            </div>
+
+            <div className="result_container">
+                <p>Ouro 999,9</p>
+                <p>{ `${onCalcPure}g`}</p>
+            </div>
+
+            <div className="result_container">
+                <p>Impurezas</p>
+                <p>{`${onCalcImpure}g`}</p>
+            </div>
+            
+            <div className="result_container">
+                <p>Preço com Deságio</p>
+                <p>{`R$ ${onPriceDiscount}`}</p>
+            </div>
+
+            <div className="result_container">
+                <p>Preço na Bolsa</p>
+                <p>{`R$ ${onPriceStockExchange}`}</p>
+            </div>
+
+            <button onClick={ handleResult } className="button_style button_result">Novo Cálculo</button>
         </section>
     )
 }

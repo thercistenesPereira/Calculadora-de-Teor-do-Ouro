@@ -5,7 +5,7 @@ type Props = {
 
 function Label({ onTitle, onHtmlFor }: Props) {
     return (
-        <label htmlFor={ onHtmlFor }>{ onTitle }</label>
+        <label htmlFor={ onHtmlFor } className="label_style">{ onTitle }</label>
     );
 }
 
