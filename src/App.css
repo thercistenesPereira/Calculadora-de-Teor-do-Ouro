@@ -56,6 +56,16 @@ html, body {
   height: 1rem;
 }
 
+@media(max-width: 1024px) {
+  .content_header {
+    flex-direction: column;
+  }
+
+  .font_header_title {
+    margin-bottom: 1rem;
+  }
+}
+
 .main_style {
   display: flex;
   justify-content: center;
@@ -71,6 +81,7 @@ html, body {
   display: flex;
   flex-direction: column;
   min-width: 20rem;
+  max-width: 25rem;
   padding: 3rem 1rem 5rem 1rem;
   background-color: white;
   border-radius: 10px;
